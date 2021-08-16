@@ -4,5 +4,5 @@ line1
 line2
 
 ## INPUT-2.
-yazýlar yazýlar 
+new files
 1.	index.html
