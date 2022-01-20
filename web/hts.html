@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_rWeJ0jnSr_DEGCOxGlh5noUo27KzJf8&callback=initMap&v=weekly" async defer> </script>
+
+    </head>
+
+
+        <title>Haci İzleme Sistemi-Harita</title>
+        <body>
+            <h1>Google Map-12345</h1>
+
+            <div id="map" style="width: 800px; height: 600px;"></div>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"> </script> 
+            
+            <script>
+
+                $(function() {
+                    window.setInterval(function(){
+                        loadNewDecimal()
+                }, 1000)
+
+                function loadNewDecimal(){
+                    $.ajax({
+                        url:"/update_decimal",
+                        type: "POST",
+                        dataType: "json",
+                        success: function(data) {
+                            $(random_decimal).replaceWith(data)
+                        }
+
+                    });
+                }
+            });
+
+
+
+                
+                function initMap() {
+                    const ankara= {lat: 35.5, lng: 36.8};
+
+                    const map=new google.maps.Map(document.getElementById("map"), { 
+                        zoom: 10, 
+                        center: ankara, 
+                    });
+
+                    const marker=new google.maps.Marker({
+                        position: ankara,
+                        map: map,
+                    });
+
+                }
+
+            </script>
+
+            <div id="random_decimal">
+                {{x}}
+
+
+
+            </div>
+
+
+
+
+
+
+            
+
+        </body>
+
+
+</html>
